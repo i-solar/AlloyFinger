@@ -1,6 +1,7 @@
 /* AlloyFinger v0.1.10
  * By dntzhang
  * Github: https://github.com/AlloyTeam/AlloyFinger
+ * 学习 AlloyFinger 源代码
  */
 ; (function () {
     function getLen(v) {
@@ -37,6 +38,7 @@
         this.el = el;
     };
 
+    // 添加处理函数
     HandlerAdmin.prototype.add = function(handler) {
         this.handlers.push(handler);
     }
@@ -58,6 +60,7 @@
         }
     }
 
+    // 封装事件的函数
     function wrapFunc(el, handler) {
         var handlerAdmin = new HandlerAdmin(el);
         handlerAdmin.add(handler);
@@ -73,6 +76,8 @@
         this.move = this.move.bind(this);
         this.end = this.end.bind(this);
         this.cancel = this.cancel.bind(this);
+
+        // 绑定监听
         this.element.addEventListener("touchstart", this.start, false);
         this.element.addEventListener("touchmove", this.move, false);
         this.element.addEventListener("touchend", this.end, false);
